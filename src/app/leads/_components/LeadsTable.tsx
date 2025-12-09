@@ -26,7 +26,6 @@ import { DataTablePagination } from "@/components/data-table/DataTablePagination
 import DataTableSearch from "@/components/data-table/DataTableSearch";
 import { DataTableViewOptions } from "@/components/data-table/DataTableViewOptions";
 import { Plus } from "lucide-react";
-import { updateLead } from "@/app/leads/_lib/lead.action";
 import { useState } from "react";
 
 interface LeadsTableProps<TData, TValue> {
@@ -62,9 +61,9 @@ export function LeadsTable<TData, TValue>({
         prev.map((row, index) =>
           index === rowIndex
             ? {
-                ...prev[rowIndex],
-                [columnId]: newValue,
-              }
+              ...prev[rowIndex],
+              [columnId]: newValue,
+            }
             : row
         )
       );
@@ -140,9 +139,9 @@ export function LeadsTable<TData, TValue>({
                           {header.isPlaceholder
                             ? null
                             : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
                         </TableHead>
                       );
                     })}

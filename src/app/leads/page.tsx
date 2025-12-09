@@ -3,7 +3,6 @@ import { LeadsTable } from "@/app/leads/_components/LeadsTable";
 import { Metadata } from "next";
 import React from "react";
 import axios from "axios";
-import { db } from "@/db";
 
 export type Lead = {
   id: string;
