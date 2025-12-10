@@ -39,8 +39,6 @@ You’re taking the barebones leads table and turning it into something that fee
 
 ### Useful References
 
-These aren’t templates to copy — just solid places to learn patterns and see how others approached similar problems:
-
 - TanStack Table: https://tanstack.com/table/latest  
 - TanStack Virtual: https://tanstack.com/virtual/latest  
 - shadcn/ui Data Table example: https://ui.shadcn.com/docs/components/data-table  
