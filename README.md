@@ -15,14 +15,37 @@ Take the existing weird looking and raw leads view and evolve it into a robust, 
 <br />
 ### Core Requirements
 
-| Area                  | Expectations                                                                                       |
-| --------------------- | -------------------------------------------------------------------------------------------------- |
-| **Interaction Layer** | Toolbar for bulk actions, filters, multi-column sorting, inline editing, smooth user interactions. |
-| **Data Model & API**  | Extend the Lead schema, implement full CRUD, design predictable request behavior.                  |
-| **State & Logic**     | Caching, refresh controls, optimistic updates (where appropriate), good error/loading handling.    |
-| **Performance**       | Virtualization for large datasets, efficient renders, sensible memoization.                        |
-| **UX Polish**         | Clean layout, consistent feedback, small quality-of-life touches.                                  |
-| **Code Quality**      | Clear components, solid TypeScript, maintainable structure.                                        |
+You’re taking the barebones leads table and turning it into something that feels genuinely usable. Here’s what we expect:
+
+- **Interaction Layer**  
+  A proper table experience: a toolbar that shows up when rows are selected, bulk actions, real filtering options, multi-column sorting, inline edits, and interactions that don’t feel clunky.
+
+- **Data Model & API**  
+  Extend the Lead type with useful fields (status, priority, timestamps, tags, etc.). Wire up full CRUD against your MockAPI backend. The request flow should be predictable and not a mystery box.
+
+- **State & Logic**  
+  Handle loading, errors, and edge cases cleanly. Add caching so the table doesn’t refetch unnecessarily. Add a refresh mechanism. Use optimistic updates only if they actually improve the experience.
+
+- **Performance**  
+  Virtualize the rows so the table holds up with thousands of items. Keep renders efficient. Use memoization where it helps, not everywhere out of habit.
+
+- **UX Polish**  
+  Make it pleasant. Good spacing, readable columns, intuitive controls, clear feedback when things change, and no awkward flickers or jumps.
+
+- **Code Quality**  
+  Keep the components small and understandable. Write real TypeScript, not `any`-driven chaos. Structure things so another developer could jump in without crying.
+
+---
+
+### Useful References
+
+These aren’t templates to copy — just solid places to learn patterns and see how others approached similar problems:
+
+- TanStack Table: https://tanstack.com/table/latest  
+- TanStack Virtual: https://tanstack.com/virtual/latest  
+- shadcn/ui Data Table example: https://ui.shadcn.com/docs/components/data-table  
+- tablecn (for inspiration around filtering, toolbars, etc.): https://github.com/sadmann7/tablecn
+
 
 ## What we are looking for
 
