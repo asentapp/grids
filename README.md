@@ -11,7 +11,7 @@ We care just as much about *how* you build as *what* you build.
 
 Take the existing weird looking and raw leads view and evolve it into a robust, high-quality data experience.
 <br />
-<img src="./images/table-current.png" alt="Table Screenshot" width="1280"/>
+<img src="./images/table.png" alt="Table Screenshot" width="1280"/>
 <br />
 ### Core Requirements
 
