@@ -22,74 +22,72 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { DataTablePagination } from "@/components/data-table/DataTablePagination";
-import DataTableSearch from "@/components/data-table/DataTableSearch";
-import { DataTableViewOptions } from "@/components/data-table/DataTableViewOptions";
+import { DataTablePagination } from "@/components/data-table/pagination";
+import DataTableSearch from "@/components/data-table/search";
+import { DataTableViewOptions } from "@/components/data-table/view-options";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { Lead } from "@/types";
+import { DataTableHeaderCheckbox } from "@/components/data-table/header-checkbox";
+import { DataTableCheckbox } from "@/components/data-table/checkbox";
+import { DataTableColumnHeader } from "@/components/data-table/column-header";
+import { DataTableField } from "@/components/data-table/custom-fields/field";
+
+
+export const LeadsColumns: ColumnDef<Lead>[] = [
+  {
+    id: "select",
+    header: DataTableHeaderCheckbox,
+    cell: DataTableCheckbox,
+  },
+  {
+    accessorKey: "company",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Lead Name" />
+    ),
+    cell: DataTableField,
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+    cell: DataTableField,
+  },
+  {
+    accessorKey: "website",
+    header: "Website",
+    cell: DataTableField,
+  },
+  {
+    accessorKey: "phone",
+    header: "Phone",
+    cell: DataTableField,
+  },
+  {
+    accessorKey: "address",
+    header: "Address",
+    cell: DataTableField,
+  },
+]
+
 
 interface LeadsTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
   tableData: TData[];
 }
 
 export function LeadsTable<TData, TValue>({
-  columns,
   tableData,
 }: LeadsTableProps<TData, TValue>) {
   const [data, setData] = useState<TData[]>(tableData);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 12,
+    pageSize: 10,
   });
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  const updateData = async ({
-    rowIndex,
-    columnId,
-    newValue,
-    itemId,
-  }: {
-    rowIndex: number;
-    columnId: string;
-    newValue: string;
-    itemId: string;
-  }) => {
-    try {
-      setData((prev) =>
-        prev.map((row, index) =>
-          index === rowIndex
-            ? {
-              ...prev[rowIndex],
-              [columnId]: newValue,
-            }
-            : row
-        )
-      );
-      const response = await updateLead({
-        columnId,
-        newValue,
-        itemId,
-      });
-      if (!response.success) {
-        return {
-          success: false,
-          message: "Coudln't successfully execute updateData function",
-        };
-      }
-      return {
-        success: true,
-        message: "UpdateData function successfully executed",
-      };
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
   const table = useReactTable<TData>({
     data,
-    columns,
+    columns: LeadsColumns as ColumnDef<TData, TValue>[],
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
@@ -101,9 +99,6 @@ export function LeadsTable<TData, TValue>({
       pagination,
       columnFilters,
       sorting,
-    },
-    meta: {
-      updateData,
     },
   });
 
@@ -168,7 +163,7 @@ export function LeadsTable<TData, TValue>({
                 ) : (
                   <TableRow>
                     <TableCell
-                      colSpan={columns.length}
+                      colSpan={LeadsColumns.length}
                       className="h-24 text-center"
                     >
                       No results.

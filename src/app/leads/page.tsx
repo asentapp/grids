@@ -1,21 +1,15 @@
-import { LeadsColumns } from "./_components/LeadsColumns";
-import { LeadsTable } from "@/app/leads/_components/LeadsTable";
+import { LeadsTable } from "@/app/leads/_components/leads_table";
 import { Metadata } from "next";
 import React from "react";
 import axios from "axios";
-
-export type Lead = {
-  id: string;
-  company: string;
-  email: string;
-  website: string;
-  address: string;
-  phone: string;
-};
+import type { Lead } from "@/types";
 
 const getLeads = async (): Promise<Lead[]> => {
+  if (!process.env.MOCKAPI_URL) {
+    throw new Error("MOCKAPI_URL is not defined");
+  }
   const response = await axios.get(
-    "https://66a6ee9d23b29e17a1a3c02d.mockapi.io/leads"
+    process.env.MOCKAPI_URL
   );
   const { data } = response;
   return data as Lead[];
@@ -26,9 +20,7 @@ export const metadata: Metadata = {
   description: "List of leads",
 };
 
-async function LeadsPage() {
+export default async function LeadsPage() {
   const fetchedLeads = await getLeads();
-  return <LeadsTable columns={LeadsColumns} tableData={fetchedLeads} />;
+  return <LeadsTable tableData={fetchedLeads} />;
 }
-
-export default LeadsPage;
