@@ -9,7 +9,7 @@ We care just as much about *how* you build as *what* you build.
 
 # The What?
 
-Take the existing weird looking and raw leads view and evolve it into a robust, high-quality data experience.
+Update the existing weird looking and raw leads table at `/leads` make it into a high-quality production-ready data table.
 <br />
 <img src="./images/table.png" alt="Table Screenshot" width="1280"/>
 <br />
