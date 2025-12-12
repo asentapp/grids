@@ -129,6 +129,6 @@ Keep it simple:
     - A demo of the finished features
 4. **Push all your code to your fork**
 5. **Put the video link here : _________________ (edit the** `README.md`**)**
-6. **Send us the link to your GitHub fork + your video**
+6. **Send us the link to your GitHub fork**
 
 No branches, no PRs. Your fork *is* your submission.
