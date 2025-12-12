@@ -128,7 +128,6 @@ Keep it simple:
     - Any trade-offs or limitations
     - A demo of the finished features
 4. **Push all your code to your fork**
-5. **Put the video link here : _________________ (edit the** `README.md`**)**
-6. **Go to [tally.so/r](https://tally.so/r/44Qo7r) and submit your fork**
+5. **Go to [tally.so/r](https://tally.so/r/44Qo7r) and submit your repo and video**
 
 No branches, no PRs. Your fork *is* your submission.
